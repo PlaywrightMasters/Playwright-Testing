@@ -1,0 +1,12 @@
+services:
+  tests:
+    build: .
+    image: ecommerce-e2e
+    init: true
+    ipc: host
+    environment:
+      ENV: ${ENV:-test}
+      CI: '1'
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
